@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template>
-    <div class="grid grid-cols-4 w-[90%] h-auto mt-8 mb-8 bg-zinc-300 gap-4">
+    <div class="grid grid-cols-4 w-[90%] h-auto mt-8 mb-8 bg-zinc-300 gap-4 p-4">
         
             <div v-if="info.length" v-for="(product, index) in info" :key="index">
                 <MainPageProduct :product="product" />
