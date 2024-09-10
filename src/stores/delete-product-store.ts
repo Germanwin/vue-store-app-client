@@ -20,7 +20,7 @@ export const useProductDeleteStore = defineStore("product_delete", () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:8077/api/product/${productId.value}`
+        `https://vue-store-app-server-production.up.railway.app/api/product/${productId.value}`
       );
       console.log("Продукт удалён:", response.data);
       alert("Продукт успешно удалён!");

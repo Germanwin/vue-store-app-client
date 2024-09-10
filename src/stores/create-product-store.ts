@@ -25,7 +25,7 @@ export const useProductAddStore = defineStore("product_add", () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8077/api/product", {
+      const response = await axios.post("https://vue-store-app-server-production.up.railway.app/api/product", {
         name: productName.value,
         description: productDescription.value,
         producer: productProducer.value,

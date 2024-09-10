@@ -27,7 +27,7 @@ export default {
 </script>
 
 <template>
-    <div class="flex flex-col items-center pt-20">
+    <div class="flex w-[90%] flex-col items-center pt-20">
         <!-- Элементы управления сортировкой -->
         <MainPageSorter />
 

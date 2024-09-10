@@ -19,7 +19,7 @@ export const useSorterStore = defineStore("sorter", () => {
   const fetchProducts = async () => {
     try {
       const response: AxiosResponse<Product[]> = await axios.get(
-        "http://localhost:8077/api/product"
+        "https://vue-store-app-server-production.up.railway.app/api/product"
       );
       sorterStore.info = response.data; // Сохраняем данные в store
     } catch (error) {

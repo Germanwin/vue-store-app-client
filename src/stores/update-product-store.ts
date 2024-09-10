@@ -18,7 +18,7 @@ export const useUpdateProductStore = defineStore("product_actions", () => {
     try {
       if (productId.value !== null) {
         const response = await axios.get(
-          `http://localhost:8077/api/product/${productId.value}`
+          `https://vue-store-app-server-production.up.railway.app/api/product/${productId.value}`
         );
         product.value = response.data;
       } else {
@@ -31,7 +31,7 @@ export const useUpdateProductStore = defineStore("product_actions", () => {
 
   const updateProduct = async () => {
     try {
-      await axios.put(`http://localhost:8077/api/product`, product.value);
+      await axios.put(`http://vue-store-app-server-production.up.railway.app/api/product`, product.value);
       alert("Продукт успешно обновлён!");
     } catch (error) {
       console.error("Ошибка при обновлении продукта:", error);
