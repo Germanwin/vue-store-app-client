@@ -31,7 +31,7 @@ export default {
         <!-- Элементы управления сортировкой -->
         <MainPageSorter />
 
-        <div class="grid grid-cols-4 w-[90%] h-auto mt-8 mb-8 bg-zinc-300 gap-4 p-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-[90%] h-auto mt-8 mb-8 bg-zinc-300 gap-4 p-4">
             <div v-if="sorterStore.sortedProducts.length" v-for="(product, index) in sorterStore.sortedProducts"
                 :key="index">
                 <MainPageProduct :product="product" />
