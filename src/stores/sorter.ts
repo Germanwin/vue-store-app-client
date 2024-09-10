@@ -1,3 +1,4 @@
+import axios, { type AxiosResponse } from "axios";
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
@@ -13,6 +14,19 @@ export const useSorterStore = defineStore("sorter", () => {
   const info = ref<Product[]>([]);
   const sortKey = ref<"name" | "price">("name");
 
+  const sorterStore = useSorterStore()
+
+  const fetchProducts = async () => {
+    try {
+      const response: AxiosResponse<Product[]> = await axios.get(
+        "http://localhost:8077/api/product"
+      );
+      sorterStore.info = response.data; // Сохраняем данные в store
+    } catch (error) {
+      console.error("Ошибка при запросе:", error);
+    }
+  };
+
   const sortedProducts = computed(() => {
     return info.value.slice().sort((a, b) => {
       if (sortKey.value === "price") {
@@ -27,5 +41,6 @@ export const useSorterStore = defineStore("sorter", () => {
     info,
     sortKey,
     sortedProducts,
+    fetchProducts,
   };
 });

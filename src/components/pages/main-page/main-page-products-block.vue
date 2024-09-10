@@ -4,6 +4,7 @@ import axios, { type AxiosResponse } from 'axios';
 import MainPageProduct from './main-page-product.vue';
 import { useSorterStore, type Product } from '@/stores/sorter';
 import MainPageSorter from './main-page-sorter.vue';
+import { useUpdateProductStore } from '@/stores/update-product-store';
 
 export default {
     components: {
@@ -11,23 +12,15 @@ export default {
         MainPageSorter
     },
     setup() {
-        const store = useSorterStore();
-
-        // Функция для загрузки данных
-        const fetchProducts = async () => {
-            try {
-                const response: AxiosResponse<Product[]> = await axios.get('http://localhost:8077/api/product');
-                store.info = response.data; // Сохраняем данные в store
-            } catch (error) {
-                console.error('Ошибка при запросе:', error);
-            }
-        };
+        const sorterStore = useSorterStore()
+        const productActionsStore = useUpdateProductStore()
 
         // Загружаем данные при монтировании
-        onMounted(fetchProducts);
+        onMounted(sorterStore.fetchProducts);
 
         return {
-            store
+            productActionsStore,
+            sorterStore
         };
     }
 };
@@ -39,7 +32,8 @@ export default {
         <MainPageSorter />
 
         <div class="grid grid-cols-4 w-[90%] h-auto mt-8 mb-8 bg-zinc-300 gap-4 p-4">
-            <div v-if="store.sortedProducts.length" v-for="(product, index) in store.sortedProducts" :key="index">
+            <div v-if="sorterStore.sortedProducts.length" v-for="(product, index) in sorterStore.sortedProducts"
+                :key="index">
                 <MainPageProduct :product="product" />
             </div>
             <div v-else>
