@@ -31,7 +31,7 @@ export const useUpdateProductStore = defineStore("product_actions", () => {
 
   const updateProduct = async () => {
     try {
-      await axios.put(`http://vue-store-app-server-production.up.railway.app/api/product`, product.value);
+      await axios.put(`https://vue-store-app-server-production.up.railway.app/api/product`, product.value);
       alert("Продукт успешно обновлён!");
     } catch (error) {
       console.error("Ошибка при обновлении продукта:", error);
